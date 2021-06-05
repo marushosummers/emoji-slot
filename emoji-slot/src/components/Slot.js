@@ -2,7 +2,7 @@ import React from "react";
 
 class Slots extends React.Component {
 	static defaultProps = {
-		fruits: ["🍒", "🍉", "🍊", "🍓", "🍇", "🥝"],
+		fruits: ["🎰", "🎰", "🍒", "🍉", "🍊", "🍓", "🍇", "🥝", "🎰", "🎰"],
 	};
 
 	constructor(props) {
@@ -18,13 +18,17 @@ class Slots extends React.Component {
 		this.setState({
 			rolling: true,
 		});
-		setTimeout(() => {
-			this.setState({ rolling: false });
-		}, 700);
+	};
+
+	// to stop roolling
+	stop = () => {
+		this.setState({
+			rolling: false,
+		});
 
 		// looping through all 3 slots to start rolling
 		this.slotRef.forEach((slot, i) => {
-			// this will trigger rolling effect
+			// this will trigger stopping effect
 			const selected = this.triggerSlotRotation(slot.current);
 			this.setState({ [`fruit${i + 1}`]: selected });
 		});
@@ -40,7 +44,8 @@ class Slots extends React.Component {
 			Math.random() * Slots.defaultProps.fruits.length
 		);
 		let choosenOption = options[randomOption];
-		setTop(-choosenOption.offsetTop + 2);
+		console.log(-choosenOption.offsetTop);
+		setTop(-choosenOption.offsetTop + 5);
 		return Slots.defaultProps.fruits[randomOption];
 	};
 
@@ -49,7 +54,10 @@ class Slots extends React.Component {
 			<div className="SlotMachine">
 				<div className="slot">
 					<section>
-						<div className="container" ref={this.slotRef[0]}>
+						<div
+							className={this.state.rolling ? "rollContainer" : "container"}
+							ref={this.slotRef[0]}
+						>
 							{Slots.defaultProps.fruits.map((fruit, i) => (
 								<div key={i}>
 									<span>{fruit}</span>
@@ -60,9 +68,12 @@ class Slots extends React.Component {
 				</div>
 				<div className="slot">
 					<section>
-						<div className="container" ref={this.slotRef[1]}>
-							{Slots.defaultProps.fruits.map((fruit) => (
-								<div>
+						<div
+							className={this.state.rolling ? "rollContainer" : "container"}
+							ref={this.slotRef[1]}
+						>
+							{Slots.defaultProps.fruits.map((fruit, i) => (
+								<div key={i}>
 									<span>{fruit}</span>
 								</div>
 							))}
@@ -71,9 +82,12 @@ class Slots extends React.Component {
 				</div>
 				<div className="slot">
 					<section>
-						<div className="container" ref={this.slotRef[2]}>
-							{Slots.defaultProps.fruits.map((fruit) => (
-								<div>
+						<div
+							className={this.state.rolling ? "rollContainer" : "container"}
+							ref={this.slotRef[2]}
+						>
+							{Slots.defaultProps.fruits.map((fruit, i) => (
+								<div key={i}>
 									<span>{fruit}</span>
 								</div>
 							))}
@@ -86,6 +100,13 @@ class Slots extends React.Component {
 					disabled={this.state.rolling}
 				>
 					{this.state.rolling ? "Rolling..." : "ROLL"}
+				</div>
+				<div
+					className={"stop"}
+					onClick={this.state.rolling && this.stop}
+					disabled={!this.state.rolling}
+				>
+					{this.state.rolling ? "stop" : "click roll"}
 				</div>
 			</div>
 		);

@@ -30,11 +30,37 @@ section {
 
 .container {
     position: absolute;
-    top: 2px;
     width: 100%;
-    transition: top ease-in-out 0.5s;
+    transition: top ease-out 3s;
     text-align: center;
 }
+
+.rollContainer {
+    position: absolute;
+    width: 100%;
+    /* transition: top ease-in-out 0.5s; */
+    text-align: center;
+    animation-name: expansion;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+
+}
+
+@keyframes expansion {
+    0% {
+        top: 0px;
+    }
+
+    100% {
+        top: -360px;
+    }
+}
+
 
 .roll {
     width: 215px;
@@ -71,4 +97,15 @@ section {
     100% {
         color: #000;
     }
+}
+
+.stop {
+    width: 215px;
+    cursor: pointer;
+    background-color: red;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 3px solid black;
 }
