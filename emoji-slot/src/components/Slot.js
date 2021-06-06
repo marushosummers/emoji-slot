@@ -134,20 +134,10 @@ class Slots extends React.Component {
 					</section>
 				</div>
 				<div
-					className={!this.isRolling() ? "roll rolling" : "roll"}
-					onClick={!this.isRolling() && this.roll}
-					disabled={this.isRolling()}
+					className={this.isRolling() ? "btn stop" : "btn start"}
+					onClick={this.isRolling() ? () => {this.stop()} : () => {this.roll()}}
 				>
-					{this.isRolling() ? "Rolling..." : "ROLL"}
-				</div>
-				<div
-					className={"stop"}
-					onClick={() => {
-						this.stop();
-					}}
-					//disabled={!this.isRolling()}
-				>
-					{this.isRolling() ? "stop" : "click roll"}
+					{this.isRolling() ? "⏱" : "🎰"}
 				</div>
 			</div>
 		);
