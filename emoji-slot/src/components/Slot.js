@@ -2,12 +2,19 @@ import React from "react";
 
 class Slots extends React.Component {
 	static defaultProps = {
-		fruits: ["🎰", "🎰", "🍒", "🍉", "🍊", "🍓", "🍇", "🥝", "🎰", "🎰"],
+		fruits: ["🥝", "🎰", "🍒", "🍉", "🍊", "🍓", "🍇", "🥝", "🎰"],
 	};
 
 	constructor(props) {
 		super(props);
-		this.state = { fruit1: "🍒", fruit2: "🍒", fruit3: "🍒", rolling: false };
+		this.state = {
+			fruit1: "🍒",
+			fruit2: "🍒",
+			fruit3: "🍒",
+			rolling1: false,
+			rolling2: false,
+			rolling3: false,
+		};
 
 		// get ref of dic onn which elements will roll
 		this.slotRef = [React.createRef(), React.createRef(), React.createRef()];
@@ -16,37 +23,69 @@ class Slots extends React.Component {
 	// to trigger roolling and maintain state
 	roll = () => {
 		this.setState({
-			rolling: true,
+			rolling1: true,
+			rolling2: true,
+			rolling3: true,
 		});
 	};
 
 	// to stop roolling
 	stop = () => {
+		// TODO: Numは引数として取る方法を考える
+		const Num = this.getNextStop();
+		console.log(Num);
 		this.setState({
-			rolling: false,
+			["rolling" + Num]: false,
 		});
 
-		// looping through all 3 slots to start rolling
+		// this will trigger stopping effect
 		this.slotRef.forEach((slot, i) => {
-			// this will trigger stopping effect
-			const selected = this.triggerSlotRotation(slot.current);
-			this.setState({ [`fruit${i + 1}`]: selected });
+      if (i === Num - 1){
+        const emojiIdx = this.getEmojiIdx();
+        const emoji = this.getEmoji(emojiIdx);
+
+        this.triggerStopEffect(slot.current);
+        this.setState({ [`fruit${i+1}`]: emoji });
+      };
 		});
 	};
 
+	// get emoji Index
+	getEmojiIdx = () => {
+		return Math.ceil(Math.random() * (Slots.defaultProps.fruits.length - 2));
+	};
+
+  getEmoji = (Idx) => {
+    return Slots.defaultProps.fruits[Idx];
+  }
 	// this will create a rolling effect and return random selected option
-	triggerSlotRotation = (ref) => {
+	triggerStopEffect = (ref) => {
 		function setTop(top) {
 			ref.style.top = `${top}px`;
 		}
 		let options = ref.children;
-		let randomOption = Math.floor(
-			Math.random() * Slots.defaultProps.fruits.length
-		);
-		let choosenOption = options[randomOption];
-		console.log(-choosenOption.offsetTop);
+    const emojiIdx = this.getEmojiIdx();
+		let choosenOption = options[emojiIdx];
 		setTop(-choosenOption.offsetTop + 5);
-		return Slots.defaultProps.fruits[randomOption];
+	};
+
+	isRolling = () => {
+		return this.state.rolling1 || this.state.rolling2 || this.state.rolling3;
+	};
+
+	getNextStop = () => {
+		if (!this.isRolling()) {
+			throw Error("想定外です");
+		}
+		if (this.state.rolling1 && this.state.rolling2 && this.state.rolling3) {
+			return 1;
+		}
+		if (!this.state.rolling1 && this.state.rolling2 && this.state.rolling3) {
+			return 2;
+		}
+		if (!this.state.rolling1 && !this.state.rolling2 && this.state.rolling3) {
+			return 3;
+		}
 	};
 
 	render() {
@@ -55,7 +94,7 @@ class Slots extends React.Component {
 				<div className="slot">
 					<section>
 						<div
-							className={this.state.rolling ? "rollContainer" : "container"}
+							className={this.state.rolling1 ? "rollContainer" : "container"}
 							ref={this.slotRef[0]}
 						>
 							{Slots.defaultProps.fruits.map((fruit, i) => (
@@ -69,7 +108,7 @@ class Slots extends React.Component {
 				<div className="slot">
 					<section>
 						<div
-							className={this.state.rolling ? "rollContainer" : "container"}
+							className={this.state.rolling2 ? "rollContainer" : "container"}
 							ref={this.slotRef[1]}
 						>
 							{Slots.defaultProps.fruits.map((fruit, i) => (
@@ -83,7 +122,7 @@ class Slots extends React.Component {
 				<div className="slot">
 					<section>
 						<div
-							className={this.state.rolling ? "rollContainer" : "container"}
+							className={this.state.rolling3 ? "rollContainer" : "container"}
 							ref={this.slotRef[2]}
 						>
 							{Slots.defaultProps.fruits.map((fruit, i) => (
@@ -95,18 +134,20 @@ class Slots extends React.Component {
 					</section>
 				</div>
 				<div
-					className={!this.state.rolling ? "roll rolling" : "roll"}
-					onClick={!this.state.rolling && this.roll}
-					disabled={this.state.rolling}
+					className={!this.isRolling() ? "roll rolling" : "roll"}
+					onClick={!this.isRolling() && this.roll}
+					disabled={this.isRolling()}
 				>
-					{this.state.rolling ? "Rolling..." : "ROLL"}
+					{this.isRolling() ? "Rolling..." : "ROLL"}
 				</div>
 				<div
 					className={"stop"}
-					onClick={this.state.rolling && this.stop}
-					disabled={!this.state.rolling}
+					onClick={() => {
+						this.stop();
+					}}
+					//disabled={!this.isRolling()}
 				>
-					{this.state.rolling ? "stop" : "click roll"}
+					{this.isRolling() ? "stop" : "click roll"}
 				</div>
 			</div>
 		);
