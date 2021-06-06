@@ -15,13 +15,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run tests with ${{ matrix.node-version }}
+      - name: Setup Node with ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: yarn install, build, and test
         run: |
+          cd emoji-slot
           yarn install
           yarn build
 
