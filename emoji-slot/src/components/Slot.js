@@ -2,7 +2,7 @@ import React from "react";
 
 class Slots extends React.Component {
 	static defaultProps = {
-		fruits: ["🥝", "🎰", "🍒", "🍉", "🍊", "🍓", "🍇", "🥝", "🎰"],
+		fruits: ["🥝", "🍒", "🍉", "🍊", "🍓", "🍇", "🥝", "🍒"],
 	};
 
 	constructor(props) {
@@ -44,7 +44,7 @@ class Slots extends React.Component {
         const emojiIdx = this.getEmojiIdx();
         const emoji = this.getEmoji(emojiIdx);
 
-        this.triggerStopEffect(slot.current);
+        this.triggerStopEffect(slot.current, emojiIdx);
         this.setState({ [`fruit${i+1}`]: emoji });
       };
 		});
@@ -59,14 +59,13 @@ class Slots extends React.Component {
     return Slots.defaultProps.fruits[Idx];
   }
 	// this will create a rolling effect and return random selected option
-	triggerStopEffect = (ref) => {
+	triggerStopEffect = (ref, emojiIdx) => {
 		function setTop(top) {
 			ref.style.top = `${top}px`;
 		}
 		let options = ref.children;
-    const emojiIdx = this.getEmojiIdx();
 		let choosenOption = options[emojiIdx];
-		setTop(-choosenOption.offsetTop + 5);
+		setTop(-choosenOption.offsetTop + 20);
 	};
 
 	isRolling = () => {
@@ -108,8 +107,8 @@ class Slots extends React.Component {
 				<div className="slot">
 					<section>
 						<div
-							className={this.state.rolling2 ? "rollContainer" : "container"}
-							ref={this.slotRef[1]}
+							className={this.state.rolling3 ? "rollContainer" : "container"}
+							ref={this.slotRef[2]}
 						>
 							{Slots.defaultProps.fruits.map((fruit, i) => (
 								<div key={i}>
@@ -122,8 +121,8 @@ class Slots extends React.Component {
 				<div className="slot">
 					<section>
 						<div
-							className={this.state.rolling3 ? "rollContainer" : "container"}
-							ref={this.slotRef[2]}
+							className={this.state.rolling2 ? "rollContainer" : "container"}
+							ref={this.slotRef[1]}
 						>
 							{Slots.defaultProps.fruits.map((fruit, i) => (
 								<div key={i}>
@@ -133,11 +132,21 @@ class Slots extends React.Component {
 						</div>
 					</section>
 				</div>
-				<div
-					className={this.isRolling() ? "btn stop" : "btn start"}
-					onClick={this.isRolling() ? () => {this.stop()} : () => {this.roll()}}
-				>
-					{this.isRolling() ? "⏱" : "🎰"}
+				<div role="img" aria-labelledby="image-1">
+					<div
+						className={this.isRolling() ? "btn stop" : "btn start"}
+						onClick={
+							this.isRolling()
+								? () => {
+										this.stop();
+								  }
+								: () => {
+										this.roll();
+								  }
+						}
+					>
+						{this.isRolling() ? "⏱" : "🎰"}
+					</div>
 				</div>
 			</div>
 		);
