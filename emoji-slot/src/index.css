@@ -20,7 +20,7 @@ section {
     width: 70px;
     height: 100px;
     overflow: hidden;
-    background: linear-gradient(225deg, hsla(0, 0%, 100%, .2), hsla(0, 0%, 100%, 0) 72%), #1c1a29;
+    /* background: linear-gradient(225deg, hsla(0, 0%, 100%, .2), hsla(0, 0%, 100%, 0) 72%), #1c1a29; */
     border-radius: 2px;
     border: 1px solid lightgrey;
     color: white;
@@ -29,6 +29,8 @@ section {
     font-size: 50px;
     line-height: 60px;
     cursor: default;
+    box-shadow:0 -13px 13px -3px #ccc inset,
+    0px 13px 13px -3px #ccc inset;
 }
 
 .container {
