@@ -1,4 +1,5 @@
 import { createCanvas } from "canvas";
+import { fillTextWithTwemoji } from "node-canvas-with-twemoji";
 
 export default async (
 	request,
@@ -25,7 +26,7 @@ const createOGP = async () => {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	// The size of the emoji
-	ctx.font = "100px serif";
+	ctx.font = "120px serif";
   ctx.fillStyle = "#000000";
 
 	// use positioning
@@ -33,7 +34,24 @@ const createOGP = async () => {
 	ctx.textBaseline = "middle";
 
 	// draw the emoji
-	ctx.fillText("😃😃😃", canvas.width / 2, canvas.height / 2);
+	await fillTextWithTwemoji(
+		ctx,
+		"🎰",
+		(canvas.width / 6) * 2,
+		canvas.height / 2
+	);
+	await fillTextWithTwemoji(
+		ctx,
+		"🎰",
+		(canvas.width / 6) * 3,
+		canvas.height / 2
+	);
+	await fillTextWithTwemoji(
+		ctx,
+		"🎰",
+		(canvas.width / 6) * 4,
+		canvas.height / 2
+	);
 
 	return canvas.toBuffer();
 };
