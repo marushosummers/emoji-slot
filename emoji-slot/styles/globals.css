@@ -14,3 +14,91 @@ a {
 * {
   box-sizing: border-box;
 }
+
+body {
+  background: #F8F8F8;
+}
+
+.SlotMachine {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.slot {
+  position: relative;
+  display: inline-block;
+  height: 100px;
+  width: 80px;
+  margin: 50px 5px;
+}
+
+section {
+  position: absolute;
+  border-radius: 15px !important;
+  width: 70px;
+  height: 100px;
+  overflow: hidden;
+  /* background: linear-gradient(225deg, hsla(0, 0%, 100%, .2), hsla(0, 0%, 100%, 0) 72%), #1c1a29; */
+  border-radius: 2px;
+  border: 1px solid lightgrey;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 50px;
+  line-height: 60px;
+  cursor: default;
+  box-shadow: 0 -13px 13px -3px #ccc inset,
+    0px 13px 13px -3px #ccc inset;
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  transition: top ease-out 3s;
+  text-align: center;
+}
+
+.rollContainer {
+  position: absolute;
+  width: 100%;
+  /* transition: top ease-in-out 0.5s; */
+  text-align: center;
+  animation-name: expansion;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+
+}
+
+@keyframes expansion {
+  0% {
+    top: 0px;
+  }
+
+  100% {
+    top: -360px;
+  }
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  width: 215px;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  font-size: 50px;
+  border-radius: 20px;
+}
+
+.start {
+  background-color: #adc9ba;
+}
+
+.stop {
+  background-color: #c9aead;
+}
