@@ -9,5 +9,6 @@ services:
       - "6006:6006"
     tty: true
     stdin_open: true
+    platform: linux/amd64
     volumes:
       - "./:/usr/src/app"
