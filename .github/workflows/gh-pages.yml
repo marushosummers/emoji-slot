@@ -20,15 +20,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: yarn install, build, and test
+      - name: yarn install, build, and export
         run: |
           cd emoji-slot
           yarn install
           yarn build
+          yarn export
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./emoji-slot/build
+          publish_dir: ./emoji-slot/out
           cname: emoji-slot.marusho.io
