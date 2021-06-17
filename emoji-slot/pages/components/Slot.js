@@ -2,15 +2,15 @@ import React from "react";
 
 class Slots extends React.Component {
 	static defaultProps = {
-		fruits: ["🥝", "🍒", "🍉", "🍊", "🍓", "🍇", "🥝", "🍒"],
+		patterns: ["🥝", "🍒", "🍉", "🍊", "🍓", "🍇", "🥝", "🍒"],
 	};
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			fruit1: "🍒",
-			fruit2: "🍒",
-			fruit3: "🍒",
+			pattern1: "🍒",
+			pattern2: "🍒",
+			pattern3: "🍒",
 			rolling1: false,
 			rolling2: false,
 			rolling3: false,
@@ -45,18 +45,18 @@ class Slots extends React.Component {
         const emoji = this.getEmoji(emojiIdx);
 
         this.triggerStopEffect(slot.current, emojiIdx);
-        this.setState({ [`fruit${i+1}`]: emoji });
+        this.setState({ [`pattern${i+1}`]: emoji });
       };
 		});
 	};
 
 	// get emoji Index
 	getEmojiIdx = () => {
-		return Math.ceil(Math.random() * (Slots.defaultProps.fruits.length - 2));
+		return Math.ceil(Math.random() * (Slots.defaultProps.patterns.length - 2));
 	};
 
   getEmoji = (Idx) => {
-    return Slots.defaultProps.fruits[Idx];
+    return Slots.defaultProps.patterns[Idx];
   }
 	// this will create a rolling effect and return random selected option
 	triggerStopEffect = (ref, emojiIdx) => {
@@ -96,9 +96,9 @@ class Slots extends React.Component {
 							className={this.state.rolling1 ? "rollContainer" : "container"}
 							ref={this.slotRef[0]}
 						>
-							{Slots.defaultProps.fruits.map((fruit, i) => (
+							{Slots.defaultProps.patterns.map((pattern, i) => (
 								<div key={i}>
-									<span>{fruit}</span>
+									<span>{pattern}</span>
 								</div>
 							))}
 						</div>
@@ -110,9 +110,9 @@ class Slots extends React.Component {
 							className={this.state.rolling3 ? "rollContainer" : "container"}
 							ref={this.slotRef[2]}
 						>
-							{Slots.defaultProps.fruits.map((fruit, i) => (
+							{Slots.defaultProps.patterns.map((pattern, i) => (
 								<div key={i}>
-									<span>{fruit}</span>
+									<span>{pattern}</span>
 								</div>
 							))}
 						</div>
@@ -124,9 +124,9 @@ class Slots extends React.Component {
 							className={this.state.rolling2 ? "rollContainer" : "container"}
 							ref={this.slotRef[1]}
 						>
-							{Slots.defaultProps.fruits.map((fruit, i) => (
+							{Slots.defaultProps.patterns.map((pattern, i) => (
 								<div key={i}>
-									<span>{fruit}</span>
+									<span>{pattern}</span>
 								</div>
 							))}
 						</div>
