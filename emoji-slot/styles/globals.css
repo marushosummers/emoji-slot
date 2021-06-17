@@ -53,6 +53,7 @@ section {
 
 .container {
   position: absolute;
+  top: -40px;
   width: 100%;
   transition: top ease-out 3s;
   text-align: center;
@@ -64,7 +65,7 @@ section {
   /* transition: top ease-in-out 0.5s; */
   text-align: center;
   animation-name: expansion;
-  animation-duration: 0.5s;
+  animation-duration: 0.4s;
   animation-timing-function: linear;
   animation-delay: 0s;
   animation-iteration-count: infinite;
