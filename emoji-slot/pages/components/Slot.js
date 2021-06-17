@@ -74,7 +74,7 @@ class Slots extends React.Component {
 
 	getNextStop = () => {
 		if (!this.isRolling()) {
-			throw Error("想定外です");
+			throw Error("Exception Error");
 		}
 		if (this.state.rolling1 && this.state.rolling2 && this.state.rolling3) {
 			return 1;
