@@ -1,16 +1,30 @@
 import React from "react";
 
 class Slots extends React.Component {
+	add_glimpse_pattern = (patterns) => {
+		const first_pattern = patterns[0];
+		console.log(first_pattern);
+		const last_pattern = patterns[-1];
+		console.log(last_pattern);
+		patterns.unshift(first_pattern);
+		patterns.push(last_pattern);
+		return patterns;
+	};
+
+	static patterns = {
+		fruits: ["🥝", "🍒", "🍉", "🍊", "🍓", "🍇", "🥝", "🍒"],
+	};
+
 	static defaultProps = {
-		patterns: ["🥝", "🍒", "🍉", "🍊", "🍓", "🍇", "🥝", "🍒"],
+		patterns: Slots.patterns.fruits,
 	};
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			pattern1: "🍒",
-			pattern2: "🍒",
-			pattern3: "🍒",
+			pattern1: props.patterns[1],
+			pattern2: props.patterns[1],
+			pattern3: props.patterns[1],
 			rolling1: false,
 			rolling2: false,
 			rolling3: false,
@@ -40,13 +54,13 @@ class Slots extends React.Component {
 
 		// this will trigger stopping effect
 		this.slotRef.forEach((slot, i) => {
-      if (i === Num - 1){
-        const emojiIdx = this.getEmojiIdx();
-        const emoji = this.getEmoji(emojiIdx);
+			if (i === Num - 1) {
+				const emojiIdx = this.getEmojiIdx();
+				const emoji = this.getEmoji(emojiIdx);
 
-        this.triggerStopEffect(slot.current, emojiIdx);
-        this.setState({ [`pattern${i+1}`]: emoji });
-      };
+				this.triggerStopEffect(slot.current, emojiIdx);
+				this.setState({ [`pattern${i + 1}`]: emoji });
+			}
 		});
 	};
 
@@ -55,9 +69,9 @@ class Slots extends React.Component {
 		return Math.ceil(Math.random() * (Slots.defaultProps.patterns.length - 2));
 	};
 
-  getEmoji = (Idx) => {
-    return Slots.defaultProps.patterns[Idx];
-  }
+	getEmoji = (Idx) => {
+		return Slots.defaultProps.patterns[Idx];
+	};
 	// this will create a rolling effect and return random selected option
 	triggerStopEffect = (ref, emojiIdx) => {
 		function setTop(top) {
