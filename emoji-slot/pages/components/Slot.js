@@ -2,32 +2,31 @@ import React from "react";
 import Reel from "./Reel";
 
 class Slots extends React.Component {
-	add_glimpse_pattern = (patterns) => {
-		const first_pattern = patterns[0];
-		console.log(first_pattern);
-		const last_pattern = patterns[-1];
-		console.log(last_pattern);
-		patterns.unshift(first_pattern);
-		patterns.push(last_pattern);
-		return patterns;
+	static patterns = {
+		fruits: ["🍒", "🍉", "🍌", "🍋", "🍇", "🥝"],
+		animals: ["🦄", "🦍", "🦊", "🐈", "🦒", "🦔"],
+		faces: ["🥺", "🤣", "🙂", "🥰", "🤪", "😡"],
+		foods: ["🍣", "🍖", "🍔", "🍙", "🥟", "🥞"],
 	};
 
-	static patterns = {
-		fruits: ["🥝", "🍒", "🍉", "🍌", "🍋", "🍇", "🥝", "🍒"],
-		animals: ["🦔", "🦄", "🦍", "🦊", "🐈", "🦒", "🦔", "🦄"],
-		faces: ["😡", "🥺", "🤣", "🙂", "🥰", "🤪", "😡", "🥺"],
-		foods: ["🥞", "🍣", "🍖", "🍔", "🍙", "🥟", "🥞", "🍣"],
+	add_glimpse_pattern = (patterns) => {
+		const _patterns = patterns.slice()
+		const first_pattern = patterns[0];
+		const last_pattern = patterns.slice(-1)[0];
+		_patterns.push(first_pattern);
+		_patterns.unshift(last_pattern);
+		return _patterns;
 	};
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			patterns: Slots.patterns.fruits,
+			patterns: this.add_glimpse_pattern(Slots.patterns.fruits),
 		};
 	}
 
 	handlePatternClick = (patternName) => {
-		this.setState({ patterns: Slots.patterns[patternName] });
+		this.setState({ patterns: this.add_glimpse_pattern(Slots.patterns[patternName]) });
 	};
 
 	render() {

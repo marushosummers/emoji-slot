@@ -30,7 +30,7 @@ class Reel extends React.Component {
 	stop = () => {
 		// TODO: Numは引数として取る方法を考える
 		const Num = this.getNextStop();
-		console.log(Num);
+
 		this.setState({
 			["rolling" + Num]: false,
 		});
