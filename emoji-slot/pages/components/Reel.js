@@ -36,6 +36,7 @@ class Reel extends React.Component {
 		});
 
 		// this will trigger stopping effect
+    // TODO: Numで指定する方法を調べる
 		this.slotRef.forEach((slot, i) => {
 			if (i === Num - 1) {
 				const emojiIdx = this.getEmojiIdx();
