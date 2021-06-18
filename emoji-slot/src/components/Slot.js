@@ -5,10 +5,6 @@ import {
 	TwitterIcon,
 } from "react-share";
 class Slots extends React.Component {
-	componentDidMount() {
-		history.pushState("", "", "/");
-	}
-
 	static patterns = {
 		fruits: ["🥝", "🍒", "🍉", "🍌", "🍋", "🍇", "🥝", "🍒"],
 		animals: ["🦔", "🦄", "🦍", "🦊", "🐈", "🦒", "🦔", "🦄"],
