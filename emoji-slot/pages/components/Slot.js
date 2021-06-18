@@ -33,11 +33,11 @@ class Slots extends React.Component {
 	render() {
 		return (
 			<div className="SlotMachine">
+				<Reel patterns={this.state.patterns} />
 				<button onClick={() => this.handlePatternClick("fruits")}>🍒</button>
 				<button onClick={() => this.handlePatternClick("animals")}>🦄</button>
 				<button onClick={() => this.handlePatternClick("faces")}>🥺</button>
 				<button onClick={() => this.handlePatternClick("foods")}>🍣</button>
-				<Reel patterns={this.state.patterns} />
 			</div>
 		);
 	}
