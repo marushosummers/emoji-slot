@@ -4,14 +4,14 @@ class Reel extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			pattern1: props.patterns[1],
-			pattern2: props.patterns[1],
-			pattern3: props.patterns[1],
-			rolling1: false,
-			rolling2: false,
-			rolling3: false,
-		};
+      this.state = {
+				pattern1: props.patterns[1],
+				pattern2: props.patterns[1],
+				pattern3: props.patterns[1],
+        rolling1: false,
+        rolling2: false,
+        rolling3: false,
+		}
 
 		// get ref of dic onn which elements will roll
 		this.slotRef = [React.createRef(), React.createRef(), React.createRef()];
@@ -95,10 +95,6 @@ class Reel extends React.Component {
 			return 3;
 		}
 	};
-
-  getPattern = (Num) => {
-    return this.state[`pattern${i + 1}`];
-  };
 
 	render() {
 		return (

@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import Slot from './components/Slot'
+import styles from '../src/styles/Home.module.css'
+import Slot from '../src/components/Slot'
 import { useRouter } from 'next/router';
 
 export default function Home() {
@@ -17,6 +17,12 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta name="theme-color" content="#f7f7f7" />
 				<meta name="description" content="Emoji Slot Machine" />
+				<meta property="og:site_name" content="Emoji Slot" />
+				<meta property="og:image" content={router.query.p1} />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content="Emoji Slot" />
+				<meta name="twitter:description" content={router.query.p1} />
+				<meta name="twitter:image" content={router.query.p1} />
 			</Head>
 			<div className={styles.main}>
 				<Slot />

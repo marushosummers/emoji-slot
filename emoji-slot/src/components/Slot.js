@@ -5,30 +5,21 @@ import {
 	TwitterIcon,
 } from "react-share";
 class Slots extends React.Component {
-		componentDidMount() {
-			history.pushState("", "", "/");
-		}
+	componentDidMount() {
+		history.pushState("", "", "/");
+	}
 
 	static patterns = {
-		fruits: ["🍒", "🍉", "🍌", "🍋", "🍇", "🥝"],
-		animals: ["🦄", "🦍", "🦊", "🐈", "🦒", "🦔"],
-		faces: ["🥺", "🤣", "🙂", "🥰", "🤪", "😡"],
-		foods: ["🍣", "🍖", "🍔", "🍙", "🥟", "🥞"],
-	};
-
-	add_glimpse_pattern = (patterns) => {
-		const _patterns = patterns.slice();
-		const first_pattern = patterns[0];
-		const last_pattern = patterns.slice(-1)[0];
-		_patterns.push(first_pattern);
-		_patterns.unshift(last_pattern);
-		return _patterns;
+		fruits: ["🥝", "🍒", "🍉", "🍌", "🍋", "🍇", "🥝", "🍒"],
+		animals: ["🦔", "🦄", "🦍", "🦊", "🐈", "🦒", "🦔", "🦄"],
+		faces: ["😡", "🥺", "🤣", "🙂", "🥰", "🤪", "😡", "🥺"],
+		foods: [ "🥞", "🍣", "🍖", "🍔", "🍙", "🥟", "🥞", "🍣"],
 	};
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			patterns: this.add_glimpse_pattern(Slots.patterns.fruits),
+			patterns: Slots.patterns.fruits,
 			result1: null,
 			result2: null,
 			result3: null,
@@ -45,7 +36,7 @@ class Slots extends React.Component {
 
 	handlePatternClick = (patternName) => {
 		this.setState({
-			patterns: this.add_glimpse_pattern(Slots.patterns[patternName]),
+			patterns: Slots.patterns[patternName],
 		});
 	};
 
