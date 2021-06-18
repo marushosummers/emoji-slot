@@ -17,7 +17,7 @@ export default function Home() {
 				<meta name="description" content="Emoji Slot Machine" />
 			</Head>
 			<div className={styles.main}>
-				<Slot />
+				<Slot/>
 			</div>
 			<footer className={styles.footer}>
 				<a
