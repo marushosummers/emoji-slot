@@ -27,8 +27,8 @@ const getPrameters = (query) => {
 }
 
 const createOGP = async (parameters) => {
-	const W = 1200;
-	const H = 630;
+	const W = 600;
+	const H = 315;
 
 	const canvas = createCanvas(W, H);
 	const ctx = canvas.getContext("2d");
@@ -49,19 +49,19 @@ const createOGP = async (parameters) => {
 	await fillTextWithTwemoji(
 		ctx,
 		parameters.p1,
-		(canvas.width / 6) * 2,
+		(canvas.width / 4) * 1,
 		canvas.height / 2
 	);
 	await fillTextWithTwemoji(
 		ctx,
 		parameters.p3,
-		(canvas.width / 6) * 3,
+		(canvas.width / 4) * 2,
 		canvas.height / 2
 	);
 	await fillTextWithTwemoji(
 		ctx,
 		parameters.p2,
-		(canvas.width / 6) * 4,
+		(canvas.width / 4) * 3,
 		canvas.height / 2
 	);
 
