@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Slot from './components/Slot'
+import { useRouter } from 'next/router';
 
 export default function Home() {
-  return (
+  const router = useRouter();
+	return (
 		<div className={styles.container}>
 			<Head>
 				<title>Emoji Slot</title>
@@ -17,7 +19,7 @@ export default function Home() {
 				<meta name="description" content="Emoji Slot Machine" />
 			</Head>
 			<div className={styles.main}>
-				<Slot/>
+				<Slot />
 			</div>
 			<footer className={styles.footer}>
 				<a
@@ -27,7 +29,9 @@ export default function Home() {
 				>
 					Created by{" "}
 					<span className={styles.logo}>
-						<div role="img" aria-labelledby="image-1">🦊</div>
+						<div role="img" aria-labelledby="image-1">
+							🦊
+						</div>
 					</span>
 				</a>
 			</footer>

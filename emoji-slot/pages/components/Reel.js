@@ -43,8 +43,19 @@ class Reel extends React.Component {
 				const emoji = this.getEmoji(emojiIdx);
 
 				this.triggerStopEffect(slot.current, emojiIdx);
-				this.setState({ [`pattern${i + 1}`]: emoji });
+				this.setState({ [`pattern${i + 1}`]: emoji }, () => {
+          if (i == 2) {
+            const result = {
+              pattern1: this.state.pattern1,
+              pattern2: this.state.pattern2,
+              pattern3: this.state.pattern3,
+            };
+            this.props.updateResult(result);
+          }
+        });
 			}
+
+
 		});
 	};
 
@@ -84,6 +95,10 @@ class Reel extends React.Component {
 			return 3;
 		}
 	};
+
+  getPattern = (Num) => {
+    return this.state[`pattern${i + 1}`];
+  };
 
 	render() {
 		return (
