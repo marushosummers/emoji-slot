@@ -50,19 +50,19 @@ const createOGP = async (parameters) => {
 		ctx,
 		parameters.p1,
 		(canvas.width / 4) * 1,
-		(canvas.height / 4) * 3
+		(canvas.height / 4) * 2
 	);
 	await fillTextWithTwemoji(
 		ctx,
 		parameters.p3,
 		(canvas.width / 4) * 2,
-		(canvas.height / 4) * 3
+		(canvas.height / 4) * 2
 	);
 	await fillTextWithTwemoji(
 		ctx,
 		parameters.p2,
 		(canvas.width / 4) * 3,
-		(canvas.height / 4) * 3
+		(canvas.height / 4) * 2
 	);
 
 	return canvas.toBuffer();
