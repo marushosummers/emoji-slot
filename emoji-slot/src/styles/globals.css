@@ -97,6 +97,24 @@ section {
   border-radius: 20px;
 }
 
+.patternsBtns{
+  margin-top: 30px;
+}
+
+.patternsBtn {
+  position: relative;
+  display: inline-block;
+  width: 62px;
+  height: 60px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  font-size: 30px;
+  border-radius: 20px;
+  background-color: #eeeeee;
+}
+
 .start {
   background-color: #adc9ba;
 }
@@ -106,26 +124,26 @@ section {
 }
 
 .share {
-  display: none;
   text-align: center;
   margin: 70px 0 0;
 }
 
 .share_icon {
-  display: inline-block;
+  position: relative;
+  text-align: center;
   margin: 10px 10px;
   color: #666;
 }
 
 .balloon {
-  position: absolute;
-  display: inline-block;
-  margin: 1.5em 0;
+  position: relative;
+  text-align: center;
+  margin: 1.5em 1.5em;
   padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
   color: #555;
-  font-size: 16px;
+  font-size: 25px;
   background: #e0edff;
   border-radius: 15px;
 }
@@ -140,7 +158,9 @@ section {
   border-top: 15px solid #e0edff;
 }
 
-.balloon p {
+.pattern {
+  position: relative;
+  display: inline-block;
   margin: 0;
-  padding: 0;
+  padding: 10px;
 }

@@ -43,9 +43,9 @@ class Slots extends React.Component {
 
 		const url = new URL("https://emoji-slot.marusho.io");
 
-		url.searchParams.append("p1", state.result1);
-		url.searchParams.append("p2", state.result2);
-		url.searchParams.append("p3", state.result3);
+		url.searchParams.append("p1", state.result1 ?? "🎰");
+		url.searchParams.append("p2", state.result2 ?? "🎰");
+		url.searchParams.append("p3", state.result3 ?? "🎰");
 		return url;
 	};
 
@@ -59,23 +59,52 @@ class Slots extends React.Component {
 						ref="reel"
 						updateResult={this.updateResult}
 					/>
-					<button onClick={() => this.handlePatternClick("fruits")}>🍒</button>
-					<button onClick={() => this.handlePatternClick("animals")}>🦄</button>
-					<button onClick={() => this.handlePatternClick("faces")}>🥺</button>
-					<button onClick={() => this.handlePatternClick("foods")}>🍣</button>
+					<div className="patternsBtns">
+						<div
+							className="patternsBtn"
+							onClick={() => this.handlePatternClick("fruits")}
+						>
+							🍒
+						</div>
+						<div
+							className="patternsBtn"
+							onClick={() => this.handlePatternClick("animals")}
+						>
+							🦄
+						</div>
+						<div
+							className="patternsBtn"
+							onClick={() => this.handlePatternClick("faces")}
+						>
+							🥺
+						</div>
+						<div
+							className="patternsBtn"
+							onClick={() => this.handlePatternClick("foods")}
+						>
+							🍣
+						</div>
+					</div>
 				</div>
 				<div className="share">
 					<div className="balloon">
-						{this.state.result1}
-						{this.state.result3}
-						{this.state.result2}
+						<div className="pattern">{this.state.result1 ?? "🎰"}</div>
+						<div className="pattern">{this.state.result3 ?? "🎰"}</div>
+						<div className="pattern">{this.state.result2 ?? "🎰"}</div>
 					</div>
 					<div className="share_icon">
 						<TwitterShareButton
-							title="Emoji-Slot"
+							title={`${
+								this.state.result1 ?? "🎰"
+							} ${
+								this.state.result3 ?? "🎰"
+							} ${
+								this.state.result2 ?? "🎰"
+							}\n\n`}
 							url={this.getURL(this.state)}
+							hashtags={["emoji_slot"]}
 						>
-							<TwitterIcon size={28} round bgStyle={{ fill: "black" }} />
+							<TwitterIcon size={28} round />
 						</TwitterShareButton>
 					</div>
 				</div>
