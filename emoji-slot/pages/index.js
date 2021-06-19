@@ -2,16 +2,14 @@ import Head from 'next/head'
 import styles from '../src/styles/Home.module.css'
 import Slot from '../src/components/Slot'
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import queryString from "query-string";
 
-export default function Home() {
+export async function getServerSideProps({ query }) {
+	return { props: { query } };
+}
+
+
+export default function Home(props) {
   const router = useRouter();
-
-	useEffect(() => {
-		router.query = queryString.parse(router.asPath.split(/\?/)[1]);
-		console.log(router.asPath);
-	}, [router.asPath]);
 
 	return (
 		<div className={styles.container}>
@@ -31,11 +29,11 @@ export default function Home() {
 				<meta
 					property="og:image"
 					content={`https://emoji-slot.marusho.io/api/ogp?p1=${
-						router.query.p1 ?? "🎰"
+						props.query.p1 ?? "🎰"
 					}&p2=${
-						router.query.p2 ?? "🎰"
+						props.query.p2 ?? "🎰"
 					}&p3=${
-						router.query.p3 ?? "🎰"
+						props.query.p3 ?? "🎰"
 					}`}
 				/>
 				<meta name="twitter:card" content="summary_large_image" />
@@ -44,11 +42,11 @@ export default function Home() {
 				<meta
 					property="twitter:image"
 					content={`https://emoji-slot.marusho.io/api/ogp?p1=${
-						router.query.p1 ?? "🎰"
+						props.query.p1 ?? "🎰"
 					}&p2=${
-						router.query.p2 ?? "🎰"
+						props.query.p2 ?? "🎰"
 					}&p3=${
-						router.query.p3 ?? "🎰"
+						props.query.p3 ?? "🎰"
 					}`}
 				/>
 			</Head>
