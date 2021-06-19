@@ -53,12 +53,6 @@ class Slots extends React.Component {
 		return (
 			<div className="emojiSlot">
 				<div className="SlotMachine">
-					<Reel
-						patterns={this.state.patterns}
-						key={this.state.patterns}
-						ref="reel"
-						updateResult={this.updateResult}
-					/>
 					<div className="patternsBtns">
 						<div
 							className="patternsBtn"
@@ -85,6 +79,12 @@ class Slots extends React.Component {
 							🍣
 						</div>
 					</div>
+					<Reel
+						patterns={this.state.patterns}
+						key={this.state.patterns}
+						ref="reel"
+						updateResult={this.updateResult}
+					/>
 				</div>
 				<div className="share">
 					<div className="balloon">
@@ -94,13 +94,9 @@ class Slots extends React.Component {
 					</div>
 					<div className="share_icon">
 						<TwitterShareButton
-							title={`${
-								this.state.result1 ?? "🎰"
-							} ${
+							title={`${this.state.result1 ?? "🎰"} ${
 								this.state.result3 ?? "🎰"
-							} ${
-								this.state.result2 ?? "🎰"
-							}\n\n`}
+							} ${this.state.result2 ?? "🎰"}\n\n`}
 							url={this.getURL(this.state)}
 							hashtags={["emoji_slot"]}
 						>
