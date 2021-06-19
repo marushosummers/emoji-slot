@@ -96,9 +96,8 @@ class Slots extends React.Component {
 						<TwitterShareButton
 							title={`${this.state.result1 ?? "🎰"} ${
 								this.state.result3 ?? "🎰"
-							} ${this.state.result2 ?? "🎰"}\n\n`}
+							} ${this.state.result2 ?? "🎰"}\n\n#emoji_slot\n`}
 							url={this.getURL(this.state)}
-							hashtags={["emoji_slot"]}
 						>
 							<TwitterIcon size={28} round />
 						</TwitterShareButton>
