@@ -2,9 +2,17 @@ import Head from 'next/head'
 import styles from '../src/styles/Home.module.css'
 import Slot from '../src/components/Slot'
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import queryString from "query-string";
 
 export default function Home() {
   const router = useRouter();
+
+	useEffect(() => {
+		router.query = queryString.parse(router.asPath.split(/\?/)[1]);
+		console.log(router.asPath);
+	}, [router.asPath]);
+
 	return (
 		<div className={styles.container}>
 			<Head>
