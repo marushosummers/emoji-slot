@@ -30,14 +30,26 @@ export default function Home() {
 				<meta name="og:description" content="Emoji Slot" />
 				<meta
 					property="og:image"
-					content={`https://emoji-slot.marusho.io/api/ogp?p1=${router.query.p1}&p2=${router.query.p2}&p3=${router.query.p3}`}
+					content={`https://emoji-slot.marusho.io/api/ogp?p1=${
+						router.query.p1 ?? "🎰"
+					}&p2=${
+						router.query.p2 ?? "🎰"
+					}&p3=${
+						router.query.p3 ?? "🎰"
+					}`}
 				/>
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content="Emoji Slot" />
 				<meta name="twitter:description" content="Emoji Slot" />
 				<meta
 					property="twitter:image"
-					content={`https://emoji-slot.marusho.io/api/ogp?p1=${router.query.p1}&p2=${router.query.p2}&p3=${router.query.p3}`}
+					content={`https://emoji-slot.marusho.io/api/ogp?p1=${
+						router.query.p1 ?? "🎰"
+					}&p2=${
+						router.query.p2 ?? "🎰"
+					}&p3=${
+						router.query.p3 ?? "🎰"
+					}`}
 				/>
 			</Head>
 			<div className={styles.main}>
