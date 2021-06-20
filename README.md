@@ -14,23 +14,26 @@ emoji slot is made for learning React.js/Next.js.
 - Generate dynamic OGP with slot results on Twitter.
 ## Usage
 
-- 開発環境の起動
+- Run docker
 
 ```
 make
 ```
 
-- 開発環境に入る
+- Enter container
 
 ```
 make enter
+```
+
+- Run next for development
+
+```
 cd emoji-slot
 yarn dev
 ```
 
-
-- 開発環境を止める
-
+- Stop docker
 
 ```
 make stop
