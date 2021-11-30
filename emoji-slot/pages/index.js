@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import styles from '../src/styles/Home.module.css'
-import Slot from '../src/components/Slot'
+import styles from '../styles/Home.module.css'
+import Slot from '../components/Slot'
 import { useRouter } from 'next/router';
 
 export async function getServerSideProps({ query }) {
