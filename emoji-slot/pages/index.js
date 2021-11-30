@@ -14,7 +14,7 @@ export default function Home(props) {
 				<title>Emoji Slot</title>
 				<meta charSet="utf-8" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicons.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon.ico" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta name="theme-color" content="#f7f7f7" />
 				<meta name="keywords" content="emoji, slot, game" />
