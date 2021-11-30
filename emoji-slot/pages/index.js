@@ -57,7 +57,7 @@ export default function Home(props) {
 				>
 					Created by{" "}
 					<span className={styles.logo}>
-						<div role="img" aria-labelledby="image-1">
+						<div role="img" aria-labelledby="marusho">
 							🦊
 						</div>
 					</span>
