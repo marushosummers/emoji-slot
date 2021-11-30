@@ -1,15 +1,12 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Slot from '../components/Slot'
-import { useRouter } from 'next/router';
 
 export async function getServerSideProps({ query }) {
 	return { props: { query } };
 }
 
-
 export default function Home(props) {
-  const router = useRouter();
 
 	return (
 		<div className={styles.container}>
